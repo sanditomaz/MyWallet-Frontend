@@ -61,6 +61,12 @@ const StyledAddMoney = styled.main`
       }
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
     button {
       min-width: 326px;
       width: 100%;

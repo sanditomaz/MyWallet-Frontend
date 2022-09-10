@@ -12,7 +12,7 @@ export default function Withdraw() {
 
       <div>
         <span>
-          <input type="text" placeholder="Value"></input>
+          <input type="number" placeholder="Value"></input>
           <input type="text" placeholder="Description"></input>
           <Link to={`/home`}>
             <button type="submit">Save</button>

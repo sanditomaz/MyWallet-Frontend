@@ -1,20 +1,34 @@
 import StyledLogin from "../Styles/StyledLogin";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
+import { SignUp } from "../04.Shared/API";
 
 export default function Registration() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [disable, setDisable] = useState(false);
   //const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [form, setForm] = useState({});
+
+  function handleForm({ name, value }) {
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  }
 
   function sendForm(e) {
     setDisable(true);
-    console.log("send Form");
+    e.preventDefault();
+    const promise = SignUp(form);
+
+    promise.then((res) => navigate("/"));
+    promise.catch((err) => {
+      alert(
+        "Registration failed! 😢 Please check your email and password before trying again..."
+      );
+      setDisable(false);
+    });
   }
 
   return (
@@ -26,38 +40,46 @@ export default function Registration() {
           </div>
           <section>
             <input
-              type="text"
+              type="name"
               required
               placeholder="Name"
+              name="name"
               disabled={disable}
-              onChange={(e) => setName(e.target.value)}
-              value={name}
+              onChange={(e) =>
+                handleForm({ name: e.target.name, value: e.target.value })
+              }
             />
             <input
               type="email"
               required
               placeholder="E-mail"
+              name="email"
               disabled={disable}
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              onChange={(e) =>
+                handleForm({ name: e.target.name, value: e.target.value })
+              }
             />
 
             <input
               type="password"
               required
               placeholder="Password"
+              name="password"
               disabled={disable}
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
+              onChange={(e) =>
+                handleForm({ name: e.target.name, value: e.target.value })
+              }
             />
 
             <input
               type="password"
               required
               placeholder="Confirm password"
+              name="confirm_password"
               disabled={disable}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              value={confirmPassword}
+              onChange={(e) =>
+                handleForm({ name: e.target.name, value: e.target.value })
+              }
             />
 
             <div>
@@ -71,6 +93,7 @@ export default function Registration() {
                     radius="9"
                     color="#FFFFFF"
                     ariaLabel="three-dots-loading"
+                    top="20"
                     wrapperStyle
                     wrapperClass
                   />
