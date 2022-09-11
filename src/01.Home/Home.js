@@ -5,7 +5,7 @@ import {
   StyledHome,
   LoadingImg,
 } from "../04.Shared/exports";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../04.Shared/UserContext";
 import { ListData } from "../04.Shared/API";
@@ -29,7 +29,7 @@ export default function Home() {
       </LoadingImg>
     );
   }
-  console.log(user);
+
   return (
     <StyledHome>
       <header>
