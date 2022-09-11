@@ -29,7 +29,7 @@ const StyledHistory = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 25px;
       padding-top: 23px;
     }
     section {
@@ -58,26 +58,21 @@ const StyledHistory = styled.div`
         color: #000000;
       }
 
-      h2 {
-        padding-right: 12px;
-        font-weight: 400;
-        color: #000000;
-        font-size: 16px;
-      }
-
       h3 {
         padding-left: 12px;
         font-weight: 700;
         font-size: 17px;
         padding-bottom: 10px;
-        padding-top: 10px;
+        padding-top: 50px;
       }
       h4 {
         padding-right: 12px;
         font-weight: 400;
         font-size: 17px;
         padding-bottom: 10px;
-        padding-top: 10px;
+        padding-top: 50px;
+        color: ${({ totalBalance }) =>
+          totalBalance > 0 ? "#03AC00" : "#C70000"};
       }
     }
   }

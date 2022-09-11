@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     }
     html,body{
         height: 100%;
-        background-color:#f2f2f2;
+        background-color:#8c11be;
     }
     .root{
         height: 100%

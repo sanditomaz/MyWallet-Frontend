@@ -38,7 +38,7 @@ const StyledAddMoney = styled.main`
     justify-content: center;
     flex-direction: column;
 
-    span {
+    form {
       width: 90%;
       padding: 40px 0 40px 0;
     }

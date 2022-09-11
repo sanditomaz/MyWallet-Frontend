@@ -1,12 +1,40 @@
-import { Empty, History, StyledBoxes, StyledHome } from "../04.Shared/exports";
+import {
+  Empty,
+  History,
+  StyledBoxes,
+  StyledHome,
+  LoadingImg,
+} from "../04.Shared/exports";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../04.Shared/UserContext";
+import { ListData } from "../04.Shared/API";
 
 export default function Home() {
+  const { user } = useContext(UserContext);
+  const [userData, setUserData] = useState(null);
+  const config = { headers: { Authorization: `Bearer ${user.token}` } };
+
+  useEffect(() => {
+    const promise = ListData(config);
+    promise.then((res) => {
+      setUserData(res.data);
+    });
+  }, []);
+
+  if (userData === null || userData > 0) {
+    return (
+      <LoadingImg>
+        <img src="https://bit.ly/3zAxhsA" alt="Loading" />
+      </LoadingImg>
+    );
+  }
+  console.log(user);
   return (
     <StyledHome>
       <header>
         <aside>
-          <h1>Hello, Fulano</h1>
+          <h1>Hello, {user.name}</h1>
           <Link to={`/`}>
             <div>
               <ion-icon name="exit-outline"></ion-icon>
@@ -14,8 +42,7 @@ export default function Home() {
           </Link>
         </aside>
       </header>
-
-      <History />
+      {userData.length === 0 ? <Empty /> : <History userData={userData} />}
 
       <StyledBoxes>
         <span>

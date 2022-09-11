@@ -10,4 +10,16 @@ function SendLogin(body) {
   return axios.post(`${BASE_URL}/login`, body);
 }
 
-export { SignUp, SendLogin };
+function ListData(config) {
+  return axios.get(`${BASE_URL}/home`, config);
+}
+
+function AddValue(body, config) {
+  return axios.post(`${BASE_URL}/addmoney`, body, config);
+}
+
+function AddWithdraw(body, config) {
+  return axios.post(`${BASE_URL}/withdraw`, body, config);
+}
+
+export { SignUp, SendLogin, ListData, AddValue, AddWithdraw };

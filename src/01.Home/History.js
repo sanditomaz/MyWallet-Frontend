@@ -1,67 +1,55 @@
 import StyledHistory from "../Styles/StyledHistory";
+import StatusColor from "../Styles/StatusColor";
 
-export default function History() {
+export default function History({ userData }) {
+  const sum = (a, b) => a + b;
+  const balance = userData
+    .filter((item) => item.status === "green")
+    .map((i) => Number(i.value))
+    .reduce(sum, 0);
+
+  const sumOfRed = (a, b) => a + b;
+  const negativeBalance = userData
+    .filter((item) => item.status === "red")
+    .map((i) => Number(i.value))
+    .reduce(sumOfRed, 0);
+
+  const totalBalance = balance - negativeBalance;
+
   return (
-    <StyledHistory>
+    <StyledHistory totalBalance={totalBalance}>
       <main>
         <span>
-          <section>
-            <nav>
-              <nobr>
-                <p>30/11</p>
-              </nobr>
-
-              <h1>Lunch with mom</h1>
-            </nav>
-            <h2> 39,90</h2>
-          </section>
-
-          <section>
-            <nav>
-              <nobr>
-                <p>27/11</p>
-              </nobr>
-              <h1>Supermarket</h1>
-            </nav>
-            <h2> 542,54</h2>
-          </section>
-
-          <section>
-            <nav>
-              <nobr>
-                <p>26/11</p>
-              </nobr>
-              <h1>Barbacue shopping</h1>
-            </nav>
-            <h2>67,60</h2>
-          </section>
-
-          <section>
-            <nav>
-              <nobr>
-                <p>20/11</p>
-              </nobr>
-              <h1>Loan</h1>
-            </nav>
-            <h2> 500,00</h2>
-          </section>
-
-          <section>
-            <nav>
-              <nobr>
-                <p>15/11</p>
-              </nobr>
-              <h1>Salary</h1>
-            </nav>
-            <h2>30,000</h2>
-          </section>
+          {userData.map((item, index) => (
+            <ListTransactions
+              date={item.date}
+              description={item.description}
+              value={item.value}
+              status={item.status}
+              key={index}
+            />
+          ))}
         </span>
 
         <section>
           <h3>BALANCE</h3>
-          <h4>25,000</h4>
+          <h4>{totalBalance}</h4>
         </section>
       </main>
     </StyledHistory>
+  );
+}
+
+function ListTransactions({ date, description, value, status }) {
+  return (
+    <section>
+      <nav>
+        <nobr>
+          <p>{date}</p>
+        </nobr>
+        <h1>{description}</h1>
+      </nav>
+      <StatusColor status={status}> {value} </StatusColor>
+    </section>
   );
 }

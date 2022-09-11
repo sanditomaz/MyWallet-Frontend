@@ -12,3 +12,4 @@ export { default as StyledEmptyHome } from "../Styles/StyledEmptyHome";
 export { default as StyledHistory } from "../Styles/StyledHistory";
 export { default as StyledHome } from "../Styles/StyledHome";
 export { default as StyledLogin } from "../Styles/StyledLogin";
+export { default as LoadingImg } from "../Styles/LoadingImg";

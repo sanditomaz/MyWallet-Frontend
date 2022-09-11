@@ -6,7 +6,6 @@ import { SignUp } from "../04.Shared/API";
 
 export default function Registration() {
   const [disable, setDisable] = useState(false);
-  //const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [form, setForm] = useState({});
 
