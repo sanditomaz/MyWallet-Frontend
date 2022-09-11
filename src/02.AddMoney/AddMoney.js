@@ -1,6 +1,6 @@
 import StyledAddMoney from "../Styles/StyledAddMoney";
 import { ThreeDots } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import UserContext from "../04.Shared/UserContext";
 import { AddValue } from "../04.Shared/API";
@@ -35,7 +35,9 @@ export default function AddMoney() {
     <StyledAddMoney>
       <header>
         <aside>
-          <h1>Add a new entry</h1>
+          <Link to={`/home`}>
+            <h1>Add a new entry</h1>
+          </Link>
         </aside>
       </header>
 

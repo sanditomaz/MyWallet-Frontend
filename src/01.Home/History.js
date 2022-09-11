@@ -24,7 +24,7 @@ export default function History({ userData }) {
             <ListTransactions
               date={item.date}
               description={item.description}
-              value={item.value}
+              value={Number(item.value).toFixed(2)}
               status={item.status}
               key={index}
             />
@@ -33,7 +33,7 @@ export default function History({ userData }) {
 
         <section>
           <h3>BALANCE</h3>
-          <h4>{totalBalance}</h4>
+          <h4>{totalBalance.toFixed(2)}</h4>
         </section>
       </main>
     </StyledHistory>

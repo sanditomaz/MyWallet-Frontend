@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../04.Shared/UserContext";
-import { ListData } from "../04.Shared/API";
+import { ListData, SignOut } from "../04.Shared/API";
 
 export default function Home() {
   const { user } = useContext(UserContext);
@@ -30,13 +30,21 @@ export default function Home() {
     );
   }
 
+  function logOut() {
+    const body = {};
+    const promise = SignOut(body, config);
+    promise.then((res) => {
+      console.log(res.data);
+    });
+  }
+
   return (
     <StyledHome>
       <header>
         <aside>
           <h1>Hello, {user.name}</h1>
           <Link to={`/`}>
-            <div>
+            <div onClick={logOut}>
               <ion-icon name="exit-outline"></ion-icon>
             </div>
           </Link>

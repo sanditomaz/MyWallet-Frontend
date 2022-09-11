@@ -22,4 +22,8 @@ function AddWithdraw(body, config) {
   return axios.post(`${BASE_URL}/withdraw`, body, config);
 }
 
-export { SignUp, SendLogin, ListData, AddValue, AddWithdraw };
+function SignOut(body, config) {
+  return axios.post(`${BASE_URL}/home`, body, config);
+}
+
+export { SignUp, SendLogin, ListData, AddValue, AddWithdraw, SignOut };
