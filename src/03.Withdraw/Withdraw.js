@@ -1,7 +1,7 @@
 import StyledAddMoney from "../Styles/StyledAddMoney";
 import { ThreeDots } from "react-loader-spinner";
 import { useNavigate, Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import UserContext from "../04.Shared/UserContext";
 import { AddWithdraw } from "../04.Shared/API";
 
@@ -12,6 +12,10 @@ export default function Withdraw() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const config = { headers: { Authorization: `Bearer ${user.token}` } };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   function sendForm(e) {
     setDisable(true);

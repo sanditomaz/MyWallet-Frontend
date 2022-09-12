@@ -3,13 +3,14 @@ import styled from "styled-components";
 const StyledHistory = styled.div`
   min-width: 326px;
   width: 100%;
-  min-height: 446px;
+  max-height: 446px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   word-break: break-all;
+  word-wrap: break-word;
 
   main {
     min-width: 326px;
@@ -21,6 +22,10 @@ const StyledHistory = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      display: none;
+    }
 
     span {
       width: 100%;

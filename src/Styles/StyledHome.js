@@ -5,12 +5,12 @@ const StyledHome = styled.main`
   width: 100%;
   height: 100%;
   background-color: #8c11be;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;
   }
-  padding-bottom: 50px;
+
   header {
     width: 100%;
     display: flex;

@@ -16,6 +16,10 @@ export default function Home() {
   const config = { headers: { Authorization: `Bearer ${user.token}` } };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const promise = ListData(config);
     promise.then((res) => {
       setUserData(res.data);

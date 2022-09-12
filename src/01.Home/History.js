@@ -1,5 +1,6 @@
 import StyledHistory from "../Styles/StyledHistory";
 import StatusColor from "../Styles/StatusColor";
+import { useEffect, useState, useRef } from "react";
 
 export default function History({ userData }) {
   const sum = (a, b) => a + b;
@@ -15,6 +16,14 @@ export default function History({ userData }) {
     .reduce(sumOfRed, 0);
 
   const totalBalance = balance - negativeBalance;
+  const [seeBalance, setSeeBalance] = useState(true);
+  const bottomRef = useRef(null);
+  useEffect(() => {
+    if (seeBalance) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+    setSeeBalance(false);
+  }, []);
 
   return (
     <StyledHistory totalBalance={totalBalance}>
@@ -31,7 +40,7 @@ export default function History({ userData }) {
           ))}
         </span>
 
-        <section>
+        <section ref={bottomRef}>
           <h3>BALANCE</h3>
           <h4>{totalBalance.toFixed(2)}</h4>
         </section>
